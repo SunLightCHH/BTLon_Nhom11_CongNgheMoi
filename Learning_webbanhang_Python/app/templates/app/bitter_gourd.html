@@ -1,0 +1,25 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Khổ qua{% endblock title %}
+
+{% block bitter_gourd_content %}
+<div class="row" style="width: 100%;">
+    {%for bitter_gourd in bitter_gourds %}
+      <div class = "col-lg-4">
+          <img class="thumbnail" src="{{bitter_gourd.ImageURL}}">
+          <div class="box-element bitter_gourd">
+              <h6><strong>{{bitter_gourd.name}}</strong></h6>
+              <hr>
+  
+              <button data-bitter_gourd = {{bitter_gourd.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Thêm vào giỏ hàng</button>
+              <a class="btn btn-outline-success" href="#">Xem</a>
+              <h4 style="display: inline-block; float: right"><strong>${{bitter_gourd.price | floatformat:2}}</strong></h4>
+          </div>
+      </div>
+    {% endfor %}
+  
+  </form>
+  </div>
+  <br/><br/><br/>
+{% endblock bitter_gourd_content %}

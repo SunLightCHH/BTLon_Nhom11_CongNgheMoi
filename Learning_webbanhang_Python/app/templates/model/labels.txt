@@ -1,0 +1,15 @@
+0 DauHaLan
+1 KhoQua
+2 Bau
+3 CaTim
+4 BongCaiXanh
+5 BapCai
+6 OtChuong
+7 CaRot
+8 SupLo
+9 DuaChuot
+10 DuDu
+11 KhoaiTay
+12 BiNgo
+13 CuCaiTrang
+14 CaChua

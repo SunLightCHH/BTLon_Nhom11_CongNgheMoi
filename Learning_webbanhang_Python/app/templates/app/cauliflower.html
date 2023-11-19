@@ -1,0 +1,25 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Súp lơ{% endblock title %}
+
+{% block cauliflower_content %}
+<div class="row" style="width: 100%;">
+    {%for cauliflower in cauliflowers %}
+      <div class = "col-lg-4">
+          <img class="thumbnail" src="{{cauliflower.ImageURL}}">
+          <div class="box-element cauliflower">
+              <h6><strong>{{cauliflower.name}}</strong></h6>
+              <hr>
+  
+              <button data-cauliflower = {{cauliflower.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Thêm vào giỏ hàng</button>
+              <a class="btn btn-outline-success" href="#">Xem</a>
+              <h4 style="display: inline-block; float: right"><strong>${{cauliflower.price | floatformat:2}}</strong></h4>
+          </div>
+      </div>
+    {% endfor %}
+  
+  </form>
+  </div>
+  <br/><br/><br/>
+{% endblock cauliflower_content %}

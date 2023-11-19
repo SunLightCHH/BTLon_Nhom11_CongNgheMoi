@@ -1,0 +1,25 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Đu đủ{% endblock title %}
+
+{% block papaya_content %}
+<div class="row" style="width: 100%;">
+    {%for papaya in papayas %}
+      <div class = "col-lg-4">
+          <img class="thumbnail" src="{{papaya.ImageURL}}">
+          <div class="box-element papaya">
+              <h6><strong>{{papaya.name}}</strong></h6>
+              <hr>
+  
+              <button data-papaya = {{papaya.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Thêm vào giỏ hàng</button>
+              <a class="btn btn-outline-success" href="#">Xem</a>
+              <h4 style="display: inline-block; float: right"><strong>${{papaya.price | floatformat:2}}</strong></h4>
+          </div>
+      </div>
+    {% endfor %}
+  
+  </form>
+  </div>
+  <br/><br/><br/>
+{% endblock papaya_content %}

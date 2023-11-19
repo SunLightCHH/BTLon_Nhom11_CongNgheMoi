@@ -1,0 +1,25 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Bắp cải{% endblock title %}
+
+{% block cabbage_content %}
+<div class="row" style="width: 100%;">
+    {%for cabbage in cabbages %}
+      <div class = "col-lg-4">
+          <img class="thumbnail" src="{{cabbage.ImageURL}}">
+          <div class="box-element cabbage">
+              <h6><strong>{{cabbage.name}}</strong></h6>
+              <hr>
+  
+              <button data-cabbage = {{cabbage.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Thêm vào giỏ hàng</button>
+              <a class="btn btn-outline-success" href="#">Xem</a>
+              <h4 style="display: inline-block; float: right"><strong>${{cabbage.price | floatformat:2}}</strong></h4>
+          </div>
+      </div>
+    {% endfor %}
+  
+  </form>
+  </div>
+  <br/><br/><br/>
+{% endblock cabbage_content %}

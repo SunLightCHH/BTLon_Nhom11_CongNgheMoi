@@ -1,0 +1,25 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Ớt chuông{% endblock title %}
+
+{% block capsicum_content %}
+<div class="row" style="width: 100%;">
+    {%for capsicum in capsicums %}
+      <div class = "col-lg-4">
+          <img class="thumbnail" src="{{capsicum.ImageURL}}">
+          <div class="box-element capsicum">
+              <h6><strong>{{capsicum.name}}</strong></h6>
+              <hr>
+  
+              <button data-capsicum = {{capsicum.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Thêm vào giỏ hàng</button>
+              <a class="btn btn-outline-success" href="#">Xem</a>
+              <h4 style="display: inline-block; float: right"><strong>${{capsicum.price | floatformat:2}}</strong></h4>
+          </div>
+      </div>
+    {% endfor %}
+  
+  </form>
+  </div>
+  <br/><br/><br/>
+{% endblock capsicum_content %}

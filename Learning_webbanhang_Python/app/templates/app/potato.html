@@ -1,0 +1,25 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Khoai tây{% endblock title %}
+
+{% block potato_content %}
+<div class="row" style="width: 100%;">
+    {%for potato in potatoes %}
+      <div class = "col-lg-4">
+          <img class="thumbnail" src="{{potato.ImageURL}}">
+          <div class="box-element potato">
+              <h6><strong>{{potato.name}}</strong></h6>
+              <hr>
+  
+              <button data-potato = {{potato.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Thêm vào giỏ hàng</button>
+              <a class="btn btn-outline-success" href="#">Xem</a>
+              <h4 style="display: inline-block; float: right"><strong>${{potato.price | floatformat:2}}</strong></h4>
+          </div>
+      </div>
+    {% endfor %}
+  
+  </form>
+  </div>
+  <br/><br/><br/>
+{% endblock potato_content %}

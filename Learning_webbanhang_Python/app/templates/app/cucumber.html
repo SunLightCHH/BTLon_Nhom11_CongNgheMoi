@@ -1,0 +1,25 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Dưa chuột{% endblock title %}
+
+{% block cucumber_content %}
+<div class="row" style="width: 100%;">
+    {%for cucumber in cucumbers %}
+      <div class = "col-lg-4">
+          <img class="thumbnail" src="{{cucumber.ImageURL}}">
+          <div class="box-element cucumber">
+              <h6><strong>{{cucumber.name}}</strong></h6>
+              <hr>
+  
+              <button data-cucumber = {{cucumber.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Thêm vào giỏ hàng</button>
+              <a class="btn btn-outline-success" href="#">Xem</a>
+              <h4 style="display: inline-block; float: right"><strong>${{cucumber.price | floatformat:2}}</strong></h4>
+          </div>
+      </div>
+    {% endfor %}
+  
+  </form>
+  </div>
+  <br/><br/><br/>
+{% endblock cucumber_content %}

@@ -1,0 +1,25 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Bông cải xanh{% endblock title %}
+
+{% block broccoli_content %}
+<div class="row" style="width: 100%;">
+    {%for broccoli in broccolis %}
+      <div class = "col-lg-4">
+          <img class="thumbnail" src="{{broccoli.ImageURL}}">
+          <div class="box-element broccoli">
+              <h6><strong>{{broccoli.name}}</strong></h6>
+              <hr>
+  
+              <button data-broccoli = {{broccoli.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Thêm vào giỏ hàng</button>
+              <a class="btn btn-outline-success" href="#">Xem</a>
+              <h4 style="display: inline-block; float: right"><strong>${{broccoli.price | floatformat:2}}</strong></h4>
+          </div>
+      </div>
+    {% endfor %}
+  
+  </form>
+  </div>
+  <br/><br/><br/>
+{% endblock broccoli_content %}

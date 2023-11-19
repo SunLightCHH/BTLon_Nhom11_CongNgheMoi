@@ -1,0 +1,184 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Trang chủ{% endblock %}
+
+{% block banner_slider %}
+<!--Lên boottrap tìm slider và copy cái cuối về-->
+<div id="carouselExampleDark" class="carousel carousel-dark slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner" style="background-color: #C2E2E7;">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <!--Sửa src-->
+        <img src="{{products.3.ImageURL}}" class="d-block mx-auto" alt="img 1", height='350' width='800px'>
+        <div class="carousel-caption d-none d-md-block text-white" style="background-color: rgba(0, 128, 0, 0.0);">
+          <h5 class="p-3" style="color: #ffffff;">{{products.3.name}}</h5>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="{{products.5.ImageURL}}" class="d-block mx-auto" alt="img 2", height='350' width='800px'>
+        <div class="carousel-caption d-none d-md-block text-white" style="background-color: rgba(0, 128, 0, 0.0);">
+          <h5 class="p-3" style="color: #ffffff;">{{products.5.name}}</h5>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{{products.10.ImageURL}}" class="d-block mx-auto" alt="img 3", height='350' width='800px'>
+        <div class="carousel-caption d-none d-md-block text-white" style="background-color: rgba(0, 128, 0, 0.0);">
+          <h5 class="p-3" style="color: #ffffff;">{{products.10.name}}</h5>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{{products.13.ImageURL}}" class="d-block mx-auto" alt="img 4", height='350' width='800px'>
+        <div class="carousel-caption d-none d-md-block text-white" style="background-color: rgba(0, 128, 0, 0.0);">
+          <h5 class="p-3" style="color: #ffffff;">{{products.13.name}}</h5>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+{% endblock banner_slider%}
+
+{% block main-content %}
+<div class="row" style="width: 100%;">
+  {%for product in random_products %}
+    <div class = "col-lg-4">
+        <img class="thumbnail" src="{{product.ImageURL}}">
+        <div class="box-element product">
+            <h6><strong>{{product.name}}</strong></h6>
+            <hr>
+
+            <button data-product = {{product.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Thêm vào giỏ hàng</button>
+            <a class="btn btn-outline-success" href="#">Xem</a>
+            <h4 style="display: inline-block; float: right"><strong>${{product.price | floatformat:2}}</strong></h4>
+        </div>
+    </div>
+  {% endfor %}
+<!--action="{% url 'getImage' %}"-->
+  <h2>Tìm kiếm bằng hình ảnh</h2>
+  <form method="POST"  enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="image" accept="image/*">
+      <button type="submit">Tìm kiếm</button>
+  </form>
+
+  {% if uploaded_file_url %}
+      <h2>Tìm kiếm bằng hình ảnh</h2>
+      <img src="{% static uploaded_file_url %}" alt="Uploaded Image" style="width: 150px; height: 100px;">
+      <h2>Loại rau củ quả được dự đoán</h2>
+      <p>{{ predicted_class }}</p>
+
+      {% if predicted_class == "Đậu Hà Lan" %}
+        <script>
+            // Chuyển hướng sang trang bean.html
+            window.location.href = "{% url 'bean' %}";
+        </script>
+      {% endif %}
+
+      {% if predicted_class == "Khổ qua" %}
+        <script>
+            // Chuyển hướng sang trang bitter_ground.html
+            window.location.href = "{% url 'bitter_ground' %}";
+        </script>
+      {% endif %}
+
+      {% if predicted_class == "Bầu" %}
+        <script>
+            // Chuyển hướng sang trang bottle_gourd.html
+            window.location.href = "{% url 'bottle_gourd' %}";
+        </script>
+      {% endif %}
+
+      {% if predicted_class == "Bông cải xanh" %}
+        <script>
+            // Chuyển hướng sang trang broccoli.html
+            window.location.href = "{% url 'broccoli' %}";
+        </script>
+      {% endif %}
+
+      {% if predicted_class == "Bắp cải" %}
+        <script>
+            // Chuyển hướng sang trang cabbage.html
+            window.location.href = "{% url 'cabbage' %}";
+        </script>
+      {% endif %}
+
+      {% if predicted_class == "Ớt chuông" %}
+        <script>
+            // Chuyển hướng sang trang capsicum.html
+            window.location.href = "{% url 'capsicum' %}";
+        </script>
+      {% endif %}
+
+      {% if predicted_class == "Cà rốt" %}
+        <script>
+            // Chuyển hướng sang trang carrot.html
+            window.location.href = "{% url 'carrot' %}";
+        </script>
+      {% endif %}
+
+      {% if predicted_class == "Súp lơ" %}
+        <script>
+            // Chuyển hướng sang trang cauliflower.html
+            window.location.href = "{% url 'cauliflower' %}";
+        </script>
+      {% endif %}
+
+      {% if predicted_class == "Dưa chuột" %}
+        <script>
+            // Chuyển hướng sang trang cucumber.html
+            window.location.href = "{% url 'cucumber' %}";
+        </script>
+      {% endif %}
+
+      {% if predicted_class == "Đu đủ" %}
+        <script>
+            // Chuyển hướng sang trang papaya.html
+            window.location.href = "{% url 'papaya' %}";
+        </script>
+      {% endif %}
+      
+      {% if predicted_class == "Khoai tây" %}
+        <script>
+            // Chuyển hướng sang trang potato.html
+            window.location.href = "{% url 'potato' %}";
+        </script>
+      {% endif %}
+
+      {% if predicted_class == "Bí ngô" %}
+        <script>
+            // Chuyển hướng sang trang pumpkin.html
+            window.location.href = "{% url 'pumpkin' %}";
+        </script>
+      {% endif %}
+
+      {% if predicted_class == "Củ cải trắng" %}
+        <script>
+            // Chuyển hướng sang trang radish.html
+            window.location.href = "{% url 'radish' %}";
+        </script>
+      {% endif %}
+
+      {% if predicted_class == "Cà chua" %}
+        <script>
+            // Chuyển hướng sang trang tomato.html
+            window.location.href = "{% url 'tomato' %}";
+        </script>
+      {% endif %}
+  {% endif %}
+
+</form>
+</div>
+<br/><br/><br/>
+{% endblock main-content %}

@@ -1,0 +1,25 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Củ cải trắng{% endblock %}
+
+{% block radish_content %}
+<div class="row" style="width: 100%;">
+    {%for radish in radishs %}
+      <div class = "col-lg-4">
+          <img class="thumbnail" src="{{radish.ImageURL}}">
+          <div class="box-element radish">
+              <h6><strong>{{radish.name}}</strong></h6>
+              <hr>
+  
+              <button data-radish = {{radish.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Thêm vào giỏ hàng</button>
+              <a class="btn btn-outline-success" href="#">Xem</a>
+              <h4 style="display: inline-block; float: right"><strong>${{radish.price | floatformat:2}}</strong></h4>
+          </div>
+      </div>
+    {% endfor %}
+  
+  </form>
+  </div>
+  <br/><br/><br/>
+{% endblock radish_content %}

@@ -1,0 +1,25 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Bí ngô{% endblock title %}
+
+{% block pumpkin_content %}
+<div class="row" style="width: 100%;">
+    {%for pumpkin in pumpkins %}
+      <div class = "col-lg-4">
+          <img class="thumbnail" src="{{pumpkin.ImageURL}}">
+          <div class="box-element pumpkin">
+              <h6><strong>{{pumpkin.name}}</strong></h6>
+              <hr>
+  
+              <button data-pumpkin = {{pumpkin.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Thêm vào giỏ hàng</button>
+              <a class="btn btn-outline-success" href="#">Xem</a>
+              <h4 style="display: inline-block; float: right"><strong>${{pumpkin.price | floatformat:2}}</strong></h4>
+          </div>
+      </div>
+    {% endfor %}
+  
+  </form>
+  </div>
+  <br/><br/><br/>
+{% endblock pumpkin_content %}

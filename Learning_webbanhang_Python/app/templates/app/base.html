@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- css -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link href="{%static 'app/css/style.css' %}" rel="stylesheet" />
+        <link href="{%static 'app/css/owl.carousel.min.css' %}" rel="stylesheet" />
+        <link href="{%static 'app/css/all.min.css' %}" rel="stylesheet" />
+        <link type="text/css" href="{%static 'app/css/main.css' %}" rel="stylesheet"/>
+        
+
+        <!-- js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+        <script src="{%static 'app/js/owl.carousel.min.js' %}"></script>
+        <script src="{%static 'app/js/all.min.js' %}"></script>
+        <script src="{%static 'app/js/myscript.js' %}"></script>        
+        <script src="{%static 'app/js/search.js' %}"></script>
+        <script type="text/javascript">
+          var user = '{{request.user}}';
+          function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i=0;i<cookies.length;i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+          }
+          const csrftoken = getCookie('csrftoken');
+          
+        </script>
+
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Header -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="{% url 'home' %}">
+               <img src="{% static "app/images/Neel.png" %}" width='50' height = '50' alt="None">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Trang chủ</a>
+                  </li>
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Sản phẩm
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li id = "bitter_groundLink"><a class="dropdown-item" href="{% url 'bitter_ground'%}">Khổ qua</a></li>
+                      <li id = "beanLink"><a class="dropdown-item" href="{% url 'bean' %}">Đậu hà lan</a></li>
+                      <li id = "bottle_gourdLink"><a class="dropdown-item" href="{% url 'bottle_gourd' %}">Bầu</a></li>
+                      <li id = "broccoliLink"><a class="dropdown-item" href="{% url 'broccoli' %}">Bông cải xanh</a></li>
+                      <li id = "cabbageLink"><a class="dropdown-item" href="{% url 'cabbage'%}">Bắp cải</a></li>
+                      <li id = "capsicumLink"><a class="dropdown-item" href="{% url 'capsicum' %}">Ớt chuông</a></li>
+                      <li id = "carrotLink"><a class="dropdown-item" href="{% url 'carrot' %}">Cà rốt</a></li>
+                      <li id = "cauliflowerLink"><a class="dropdown-item" href="{% url 'cauliflower' %}">Súp lơ</a></li>
+                      <li id = "cucumberLink"><a class="dropdown-item" href="{% url 'cucumber' %}">Dưa chuột</a></li>
+                      <li id = "papayaLink"><a class="dropdown-item" href="{% url 'papaya' %}">Đu đủ</a></li>
+                      <li id = "potatoLink"><a class="dropdown-item" href="{% url 'potato' %}">Khoai tây</a></li>
+                      <li id = "pumpkinLink"><a class="dropdown-item" href="{% url 'pumpkin' %}">Bí ngô</a></li>
+                      <li id = "radishLink"><a class="dropdown-item" href="{% url 'radish' %}">Củ cải</a></li>
+                      <li id = "tomatoLink"><a class="dropdown-item" href="{% url 'tomato' %}">Cà chua</a></li>
+                    </ul>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about_us' %}">Giới thiệu</a>
+                  </li>
+                </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-input">
+                  <button class="btn btn-outline-success" type="button" onclick="performSearch()">Search</button>
+                </form>
+              </div>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Người dùng
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Trang cá nhân</a></li>
+                    <li><a class="dropdown-item" href="{% url 'cart' %}">Đơn hàng</a></li>
+                    <li><a class="dropdown-item" href="#">Thoát</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="{% url 'login' %}">Đăng nhập</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="{% url 'register' %}">Đăng ký</a>
+                </li>
+              </ul>
+              <div class = "form-inline my-2 my-lg-0">
+                <a href="{% url 'cart' %}"><img id="cart-icon" src = "{% static 'images/cart.png' %}"></img></a>
+                <p id="cart-total">{{cartitems}}</p>
+              </div>
+            </div>
+          </nav>
+
+        <!-- main body -->
+        {% block banner_slider %}{% endblock banner_slider%}
+        {% block main-content %}{% endblock main-content %}
+        <!--Giao diện cart-->
+        {% block cart_content %}{% endblock cart_content %}
+        <!--Giao diện checkout-->
+        {% block content_checkout %}{% endblock content_checkout %}
+        <!--Giao diện search-->
+        {% block search_content %}{% endblock search_content %}
+        <!--Giao diện bean-->
+        {% block bean_content %}{% endblock bean_content %}
+        <!--Giao diện bitter_gourd-->
+        {% block bitter_gourd_content %}{% endblock bitter_gourd_content %}
+        <!--Giao diện bottle_gourd-->
+        {% block bottle_gourd_content %}{% endblock bottle_gourd_content %}
+        <!--Giao diện broccoli-->
+        {% block broccoli_content %}{% endblock broccoli_content %}
+        <!--Giao diện cabbage-->
+        {% block cabbage_content %}{% endblock cabbage_content %}
+        <!--Giao diện capsicum-->
+        {% block capsicum_content %}{% endblock capsicum_content %}
+        <!--Giao diện carrot-->
+        {% block carrot_content %}{% endblock carrot_content %}
+        <!--Giao diện cauliflower-->
+        {% block cauliflower_content %}{% endblock cauliflower_content %}
+        <!--Giao diện cucumber-->
+        {% block cucumber_content %}{% endblock cucumber_content %}
+        <!--Giao diện papaya-->
+        {% block papaya_content %}{% endblock papaya_content %}
+        <!--Giao diện potato-->
+        {% block potato_content %}{% endblock potato_content %}
+        <!--Giao diện pumpkin-->
+        {% block pumpkin_content %}{% endblock pumpkin_content %}
+        <!--Giao diện radish-->
+        {% block radish_content %}{% endblock radish_content %}
+        <!--Giao diện tomato-->
+        {% block tomato_content %}{% endblock tomato_content %}
+
+        <!-- footer -->
+        <footer class="container--fluid bg-success text-center fixed-bottom p-2 mt-5">
+            -- Nguyễn Tuấn Anh --
+            Trần Vũ Minh Nhật
+            -- Thái Thế Triều --
+        </footer>
+        <script src="{%static 'app/js/cart.js' %}"></script>
+    </body>
+</html>

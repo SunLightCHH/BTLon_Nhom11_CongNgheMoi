@@ -1,0 +1,28 @@
+{% extends "app/base.html" %}
+
+{% block title %}Trang kết quả{% endblock %}
+
+{% block search_content %}
+  <h2>Kết quả tìm kiếm</h2>
+  <p>Hiển thị kết quả cho: {{ search_query }}</p>
+
+  <!-- Hiển thị kết quả tìm kiếm tại đây (có thể sử dụng vòng lặp và điều kiện) -->
+  <div class="row" style="width: 100%;">
+    {%for product in productSelected %}
+      <div class = "col-lg-4">
+          <img class="thumbnail" src="{{product.ImageURL}}">
+          <div class="box-element product">
+              <h6><strong>{{product.name}}</strong></h6>
+              <hr>
+  
+              <button data-product = {{product.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Thêm vào giỏ hàng</button>
+              <a class="btn btn-outline-success" href="#">Xem</a>
+              <h4 style="display: inline-block; float: right"><strong>${{product.price | floatformat:2}}</strong></h4>
+          </div>
+      </div>
+    {% endfor %}
+  
+  </form>
+  </div>
+  <br/><br/><br/>
+{% endblock search_content%}

@@ -1,0 +1,25 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Cà rốt{% endblock title %}
+
+{% block carrot_content %}
+<div class="row" style="width: 100%;">
+    {%for carrot in carrots %}
+      <div class = "col-lg-4">
+          <img class="thumbnail" src="{{carrot.ImageURL}}">
+          <div class="box-element carrot">
+              <h6><strong>{{carrot.name}}</strong></h6>
+              <hr>
+  
+              <button data-carrot = {{carrot.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Thêm vào giỏ hàng</button>
+              <a class="btn btn-outline-success" href="#">Xem</a>
+              <h4 style="display: inline-block; float: right"><strong>${{carrot.price | floatformat:2}}</strong></h4>
+          </div>
+      </div>
+    {% endfor %}
+  
+  </form>
+  </div>
+  <br/><br/><br/>
+{% endblock carrot_content %}

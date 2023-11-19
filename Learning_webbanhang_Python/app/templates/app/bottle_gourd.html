@@ -1,0 +1,25 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Bầu{% endblock title %}
+
+{% block bottle_gourd_content %}
+<div class="row" style="width: 100%;">
+    {%for bottle_gourd in bottle_gourds %}
+      <div class = "col-lg-4">
+          <img class="thumbnail" src="{{bottle_gourd.ImageURL}}">
+          <div class="box-element bottle_gourd">
+              <h6><strong>{{bottle_gourd.name}}</strong></h6>
+              <hr>
+  
+              <button data-bottle_gourd = {{bottle_gourd.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Thêm vào giỏ hàng</button>
+              <a class="btn btn-outline-success" href="#">Xem</a>
+              <h4 style="display: inline-block; float: right"><strong>${{bottle_gourd.price | floatformat:2}}</strong></h4>
+          </div>
+      </div>
+    {% endfor %}
+  
+  </form>
+  </div>
+  <br/><br/><br/>
+{% endblock bottle_gourd_content %}
