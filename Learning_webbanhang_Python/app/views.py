@@ -368,9 +368,13 @@ def getImage(request):
 
 # Disable scientific notation for clarity
 np.set_printoptions(suppress=True)
-model_path = r'E:/Công nghệ mới PTUD/BTLon/Learning_webbanhang_Python/app/templates/model/keras_model.h5'
+relative_path = 'templates\model\keras_model.h5'
+
+templates_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'app')
+
+absolute_path = os.path.join(templates_dir, relative_path)
 # Load the model
-model = load_model(model_path, compile=True)
+model = load_model(absolute_path, compile=True)
 
 # Load the labels
 class_names = ["Đậu Hà Lan", "Khổ qua", "Bầu", "Cà tím", "Bông cải xanh", "Bắp cải", "Ớt chuông", "Cà rốt", "Súp lơ", "Dưa chuột", "Đu đủ", "Khoai tây", "Bí ngô", "Củ cải trắng", "Cà chua"]
